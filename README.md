@@ -1,2 +1,2 @@
 # kant-framework
-Kant PHP Framework
+Kant PHP Framework for API
