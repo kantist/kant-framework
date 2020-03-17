@@ -15,5 +15,12 @@
     ],
     "require": {
         "php": ">=7.2.0"
+    },
+    {
+        "extra": {
+            "installer-paths": {
+                "/": [""]
+            }
+        }
     }
 }
