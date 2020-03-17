@@ -1,0 +1,19 @@
+{
+    "name": "kantist/kant-framework",
+    "type": "project",
+    "description": "Kant PHP Framework",
+    "keywords": ["kant", "php", "framework"],
+    "homepage": "https://github.com/kantist/kant-framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emirhan Yumak",
+            "email": "emiryumak@gmail.com",
+            "homepage": "https://kant.ist",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.0"
+    }
+}
