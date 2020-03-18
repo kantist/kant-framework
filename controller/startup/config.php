@@ -71,6 +71,7 @@ class ControllerStartupConfig extends Controller {
 			$this->config->set('API_PATH_NINETH', $path_nineth);
 			define('REQUEST_METHOD', strtoupper($this->request->server['REQUEST_METHOD']));
 
+			// To Fix CORS Errors
 			if (REQUEST_METHOD == 'OPTIONS') {
 				return new Action('startup/cors');
 			}

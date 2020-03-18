@@ -20,6 +20,7 @@ if ($config->get('error_log')) {
 }
 
 date_default_timezone_set($config->get('timezone_default'));
+setlocale(LC_ALL, $config->get('locale_default'));
 
 // Response
 $response = new Response();

@@ -1,15 +1,16 @@
 <?php
 // Version
 define('VERSION', '1.0.0');
+define('VERSION_PATH', 'v1');
 
 // BASES
-define('DOMAIN', explode('.', $_SERVER['HTTP_HOST'])[0]);
-define('MAIN_DOMAIN', str_replace(DOMAIN . '.', '', $_SERVER['HTTP_HOST']));
-define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']); // ../../api.domain.com
-define('HTTP_SERVER', 'https://api.' . MAIN_DOMAIN . '/v1/');
+define('DOMAIN', explode('.', $_SERVER['HTTP_HOST'])[0]); // sub
+define('MAIN_DOMAIN', str_replace(DOMAIN . '.', '', $_SERVER['HTTP_HOST'])); // domain.com
+define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']); // ../../sub.domain.com
+define('HTTP_SERVER', 'https://' . $_SERVER['HTTP_HOST'] . '/' . VERSION_PATH . '/'); // https://sub.domain.com/v1/
 
 // COMMON DIR
-define('DIR_APPLICATION', DOCUMENT_ROOT . '/v1/');
+define('DIR_APPLICATION', DOCUMENT_ROOT . '/');
 define('DIR_SYSTEM', DIR_APPLICATION . 'system/');
 define('DIR_CONFIG', DIR_SYSTEM . 'config/');
 define('DIR_STORAGE', DIR_SYSTEM . 'storage/');
