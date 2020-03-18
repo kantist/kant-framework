@@ -33,7 +33,6 @@ if (ENVIRONMENT == 'production') {
 
 // Actions
 $_['action_pre_action']		= array(
-	'startup/config',
 	'startup/startup',
 	'startup/error',
 	'startup/router'

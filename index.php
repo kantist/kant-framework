@@ -1,8 +1,7 @@
 <?php
-// Version
-define('VERSION', '1.0.0');
-
 // BASES
+define('DOMAIN', explode('.', $_SERVER['HTTP_HOST'])[0]); // sub
+define('MAIN_DOMAIN', str_replace(DOMAIN . '.', '', $_SERVER['HTTP_HOST'])); // domain.com
 define('DOCUMENT_ROOT', realpath(dirname(__FILE__))); // ../../sub.domain.com
 define('DOCUMENT_PATH', end(explode('/', DOCUMENT_ROOT))); //
 define('HTTP_SERVER', 'https://' . $_SERVER['HTTP_HOST'] . '/' . DOCUMENT_PATH . '/'); // https://sub.domain.com/v1/
@@ -33,7 +32,4 @@ if (ENVIRONMENT == 'development') {
 // Startup
 require_once(DIR_SYSTEM . 'startup.php');
 
-$application_config = 'api';
-
-// Application
-require_once(DIR_SYSTEM . 'framework.php');
+start('api');
