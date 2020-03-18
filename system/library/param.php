@@ -1,5 +1,5 @@
 <?php
-class param {
+class Param {
 	public $pagination = array();
 	public $includes = array();
 
