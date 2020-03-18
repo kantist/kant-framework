@@ -2,10 +2,9 @@
 // Site
 $_['site_ssl']             = false;
 
-// Language
-$_['language_default']     = 'tr';
-$_['language_autoload']    = array('tr');
-$_['language_autostart']   = true;
+// Locale
+$_['locale_default']	   = 'tr_TR.utf8';
+$_['timezone_default']	   = 'Asia/Istanbul';
 
 // Database
 $_['db_autostart']         = false;
@@ -15,19 +14,6 @@ $_['db_username']          = 'root';
 $_['db_password']          = '';
 $_['db_database']          = '';
 $_['db_port']              = 3306;
-
-// Mail
-$_['mail_protocol']        = 'mail'; // mail or smtp
-$_['mail_from']            = ''; // Your E-Mail
-$_['mail_sender']          = ''; // Your name or company name
-$_['mail_reply_to']        = ''; // Reply to E-Mail
-$_['mail_smtp_hostname']   = '';
-$_['mail_smtp_username']   = '';
-$_['mail_smtp_password']   = '';
-$_['mail_smtp_port']       = 25;
-$_['mail_smtp_timeout']    = 5;
-$_['mail_verp']            = false;
-$_['mail_parameter']       = '';
 
 // Cache
 $_['cache_autostart']	   = true;
@@ -42,14 +28,8 @@ $_['session_name']         = 'KANTSESSID';
 // Template
 $_['template_type']        = 'basic';
 
-// Payment
-$_['payment_autostart']    = true;
-
 // Param
 $_['param_autostart']      = false;
-
-// Bulutfon
-$_['bulutfon_autostart']   = false;
 
 // Error
 $_['error_display']        = true;

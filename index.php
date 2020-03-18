@@ -9,14 +9,17 @@ define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']); // ../../api.domain.com
 define('HTTP_SERVER', 'https://api.' . MAIN_DOMAIN . '/v1/');
 
 // COMMON DIR
-define('DIR_REPOSITORY', DOCUMENT_ROOT . '/v1/repository/');
 define('DIR_APPLICATION', DOCUMENT_ROOT . '/v1/');
-define('DIR_SYSTEM', DOCUMENT_ROOT . '/v1/system/');
-define('DIR_CONFIG', DOCUMENT_ROOT . '/v1/system/config/');
+define('DIR_SYSTEM', DIR_APPLICATION . 'system/');
+define('DIR_CONFIG', DIR_SYSTEM . 'config/');
+define('DIR_STORAGE', DIR_SYSTEM . 'storage/');
 define('DIR_LOGS', DOCUMENT_ROOT . '/');
+define('DIR_REPOSITORY', DIR_APPLICATION . 'repository/');
+define('DIR_IMAGE', DIR_REPOSITORY . 'repo/image/');
+define('DIR_CACHE', DIR_REPOSITORY . 'repo/cache/');
 
 // OTHER DEFINES
-define('ENVIRONMENT', 'production');
+define('ENVIRONMENT', 'development');
 define('COOKIE_DOMAIN', '.' . MAIN_DOMAIN);
 define('SESSION', '.' . strtoupper(MAIN_DOMAIN));
 define('SESSION_EXPIRE', 2 * 24 * 60 * 60);

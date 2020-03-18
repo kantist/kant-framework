@@ -11,6 +11,9 @@ $_['db_password']			= 'db_pass';
 $_['db_database']			= 'db_database';
 $_['db_port']				= '3306';
 
+// Reponse
+$_['response_header']      = array('Content-Type: application/json');
+
 // Session
 $_['session_autostart']		= false;
 
@@ -31,9 +34,7 @@ if (ENVIRONMENT == 'production') {
 // Actions
 $_['action_pre_action']		= array(
 	'startup/config',
-	'startup/permission',
 	'startup/startup',
-	'startup/session',
 	'startup/error',
 	'startup/seo_url'
 );

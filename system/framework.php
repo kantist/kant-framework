@@ -19,9 +19,12 @@ if ($config->get('error_log')) {
 	$registry->set('log', new Log($config->get('error_filename')));	
 }
 
+date_default_timezone_set($config->get('timezone_default'));
+
 // Response
 $response = new Response();
-$response->addHeader('Content-Type: application/json; charset=utf-8');
+$response->addHeader($config->get('response_header')[0]);
+$response->setCompression($config->get('response_compression'));
 $registry->set('response', $response);
 
 // Database
@@ -87,6 +90,13 @@ if ($config->has('model_autoload')) {
 	}
 }
 
+// Helper Autoload
+if ($config->has('helper_autoload')) {
+	foreach ($config->get('helper_autoload') as $value) {
+		$loader->model($value);
+	}
+}
+
 // Front Controller
 $controller = new Front($registry);
 
@@ -101,5 +111,4 @@ if ($config->has('action_pre_action')) {
 $controller->dispatch(new Action($config->get('action_router')), new Action($config->get('action_error')));
 
 // Output
-$response->setCompression($config->get('config_compression'));
 $response->output();

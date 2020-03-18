@@ -71,9 +71,6 @@ class ControllerStartupConfig extends Controller {
 			$this->config->set('API_PATH_NINETH', $path_nineth);
 			define('REQUEST_METHOD', strtoupper($this->request->server['REQUEST_METHOD']));
 
-			define('DIR_IMAGE', DIR_REPOSITORY . 'repo/image/');
-			define('DIR_CACHE', DIR_REPOSITORY . 'repo/cache/');
-
 			if (REQUEST_METHOD == 'OPTIONS') {
 				return new Action('startup/cors');
 			}

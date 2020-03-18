@@ -125,35 +125,6 @@ final class Loader {
 		return $output;
 	}
 
-	public function email($route, $data = array()) {
-		// Sanitize the call
-		$route = str_replace('../', '', (string)$route);
-		
-		// Trigger the pre events
-		$result = $this->registry->get('event')->trigger('/common/system/library/emails/' . $route . '/before', array(&$route, &$data));
-		
-		if ($result) {
-			return $result;
-		}
-		
-		$template = new Template('email');
-		
-		foreach ($data as $key => $value) {
-			$template->set($key, $value);
-		}
-		
-		$output = $template->render($route . '.tpl');
-		
-		// Trigger the post e
-		$result = $this->registry->get('event')->trigger('/common/system/library/emails/' . $route . '/after', array(&$route, &$data, &$output));
-		
-		if ($result) {
-			return $result;
-		}
-		
-		return $output;
-	}
-
 	protected function callback($registry, $route) {
 		return function($args) use($registry, &$route) {			
 			// Trigger the pre events
