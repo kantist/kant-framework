@@ -50,8 +50,8 @@ $_['library_autoload']     = array();
 $_['model_autoload']       = array();
 
 // Actions
-$_['action_default']       = 'common/home';
+$_['action_default']       = 'error/route';
 $_['action_router']        = 'startup/router';
-$_['action_error']         = 'error/not_found';
+$_['action_error']         = 'error/route';
 $_['action_pre_action']    = array();
 $_['action_event']         = array();

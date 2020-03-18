@@ -36,5 +36,5 @@ $_['action_pre_action']		= array(
 	'startup/config',
 	'startup/startup',
 	'startup/error',
-	'startup/seo_url'
+	'startup/router'
 );
