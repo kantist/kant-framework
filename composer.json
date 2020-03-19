@@ -1,22 +1,23 @@
 {
-    "name": "kantist/kant-framework",
-    "type": "project",
-    "description": "Kant PHP Framework",
-    "keywords": ["kant", "php", "framework"],
-    "homepage": "https://github.com/kantist/kant-framework",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Emirhan Yumak",
-            "email": "emiryumak@gmail.com",
-            "homepage": "https://kant.ist",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=7.2.0"
-    },
-    "config": {
-        "vendor-dir": "./system/storage/vendor/"
-    }
+	"name": "kantist/kant-framework",
+	"type": "project",
+	"description": "Kant PHP Framework",
+	"keywords": ["kant", "php", "framework"],
+	"homepage": "https://github.com/kantist/kant-framework",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Emirhan Yumak",
+			"email": "emiryumak@gmail.com",
+			"homepage": "https://kant.ist",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": ">=7.2.0",
+		"guzzlehttp/guzzle": "^6.3.3"
+	},
+	"config": {
+		"vendor-dir": "./system/storage/vendor/"
+	}
 }
