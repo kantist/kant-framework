@@ -356,6 +356,8 @@ class DB {
 			}
 
 			$query = ' WHERE ' . implode(' AND ', $statements);
+
+			return $query;
 		} elseif (is_string($where)) {
 			return ' WHERE ' . $where;
 		}
