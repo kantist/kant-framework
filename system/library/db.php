@@ -34,7 +34,7 @@ class DB {
 	 *
 	 * @var	string
 	 */
-	protected $_escape_char = '"';
+	protected $_escape_char = '`';
 
 	/**
 	 * Constructor
@@ -112,7 +112,7 @@ class DB {
 			$values[] = $this->escape($val);
 		}
 
-		return $this->_insert($this->protect_identifiers($table, TRUE, NULL, FALSE), $fields, $values);
+		return $this->_insert($this->protect_identifiers($table, NULL, FALSE), $fields, $values);
 	}
 
 	/**
@@ -147,7 +147,7 @@ class DB {
 			$fields[$this->protect_identifiers($key)] = $this->escape($val);
 		}
 
-		return $this->_update($this->protect_identifiers($table, TRUE, NULL, FALSE), $fields, $where);
+		return $this->_update($this->protect_identifiers($table, NULL, FALSE), $fields, $where);
 	}
 
 	/**
@@ -189,7 +189,7 @@ class DB {
 
 			return;
 		} else {
-			$table = $this->protect_identifiers($table, TRUE, NULL, FALSE);
+			$table = $this->protect_identifiers($table, NULL, FALSE);
 		}
 
 		return $this->_delete($table, $where);
@@ -210,14 +210,80 @@ class DB {
 	// --------------------------------------------------------------------
 
 	/**
-	 * 
+	 * "Smart" Escape String
 	 *
-	 * @param	string	$value
-	 * 
+	 * Escapes data based on type
+	 * Sets boolean and null types
+	 *
+	 * @param	string
+	 * @return	mixed
+	 */
+	public function escape($str) {
+		if (is_array($str)) {
+			$str = array_map(array(&$this, 'escape'), $str);
+			return $str;
+		} elseif (is_string($str) OR (is_object($str) && method_exists($str, '__toString'))) {
+			return "'".$this->escape_str($str)."'";
+		} elseif (is_bool($str)) {
+			return ($str === FALSE) ? 0 : 1;
+		} elseif ($str === NULL) {
+			return 'NULL';
+		}
+
+		return $str;
+	}
+
+	/**
+	 * Escape String
+	 *
+	 * @param	string|string[]	$str	Input string
+	 * @param	bool	$like	Whether or not the string will be used in a LIKE condition
 	 * @return	string
 	 */
-	public function escape($value) {
-		return $this->adaptor->escape($value);
+	public function escape_str($str, $like = FALSE) {
+		if (is_array($str)) {
+			foreach ($str as $key => $val) {
+				$str[$key] = $this->escape_str($val, $like);
+			}
+
+			return $str;
+		}
+
+		$str = $this->_escape_str($str);
+
+		// escape LIKE condition wildcards
+		if ($like === TRUE) {
+			return str_replace(
+				array($this->_like_escape_chr, '%', '_'),
+				array($this->_like_escape_chr.$this->_like_escape_chr, $this->_like_escape_chr.'%', $this->_like_escape_chr.'_'),
+				$str
+			);
+		}
+
+		return $str;
+	}
+
+	/**
+	 * Escape LIKE String
+	 *
+	 * Calls the individual driver for platform
+	 * specific escaping for LIKE conditions
+	 *
+	 * @param	string|string[]
+	 * @return	mixed
+	 */
+	public function escape_like_str($str) {
+		return $this->escape_str($str, TRUE);
+	}
+
+	/**
+	 * Platform-dependent string escape
+	 *
+	 * @param	string
+	 * @return	string
+	 */
+	protected function _escape_str($str) {
+		return str_replace("'", "''", $str);
 	}
 
 	/**
@@ -373,7 +439,7 @@ class DB {
 	 * @param	bool
 	 * @return	string
 	 */
-	public function protect_identifiers($item, $prefix_single = FALSE, $protect_identifiers = NULL, $field_exists = TRUE) {
+	public function protect_identifiers($item, $protect_identifiers = NULL, $field_exists = TRUE) {
 		if (!is_bool($protect_identifiers)) {
 			$protect_identifiers = $this->_protect_identifiers;
 		}
@@ -381,7 +447,7 @@ class DB {
 		if (is_array($item)) {
 			$escaped_array = array();
 			foreach ($item as $k => $v) {
-				$escaped_array[$this->protect_identifiers($k)] = $this->protect_identifiers($v, $prefix_single, $protect_identifiers, $field_exists);
+				$escaped_array[$this->protect_identifiers($k)] = $this->protect_identifiers($v, $protect_identifiers, $field_exists);
 			}
 
 			return $escaped_array;
