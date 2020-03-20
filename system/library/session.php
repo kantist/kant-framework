@@ -1,9 +1,26 @@
 <?php
+/**
+ * @package		Kant Framework
+ * @author		Emirhan Yumak
+ * @copyright	Copyright (c) 2016 - 2020, Kant Yazılım A.Ş. (https://kant.ist/)
+ * @license		https://opensource.org/licenses/mit
+ * @link		https://kant.ist
+*/
+
+/**
+* Session class
+*/
 class Session {
 	protected $adaptor;
 	protected $session_id;
 	public $data = array();
 
+	/**
+	 * Constructor
+	 *
+	 * @param	string	$adaptor
+	 * @param	object	$registry
+	*/
 	public function __construct($adaptor, $registry = '') {
 		$class = 'Session\\' . $adaptor;
 		
@@ -21,10 +38,22 @@ class Session {
 		}	
 	}
 
+	/**
+	 * 
+	 *
+	 * @return	string
+	*/	
 	public function getId() {
 		return $this->session_id;
 	}
 
+	/**
+	 *
+	 *
+	 * @param	string	$session_id
+	 *
+	 * @return	string
+	*/	
 	public function start($session_id = '') {
 		ini_set('session.use_only_cookies', 'Off');
 		ini_set('session.use_cookies', 'On');
@@ -55,11 +84,17 @@ class Session {
 		return $session_id;
 	}
 
+	/**
+	 * 
+	*/
 	public function close() {
 		$this->adaptor->write($this->session_id, $this->data);
 	}
 
-	public function __destroy() {
+	/**
+	 * 
+	*/	
+	public function destroy() {
 		$this->adaptor->destroy($this->session_id);
 	}
 }

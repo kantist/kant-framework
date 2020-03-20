@@ -1,33 +1,4 @@
 <?php
-function token($length = 32) {
-	// Create random token
-	$string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-	$max = strlen($string) - 1;
-
-	$token = '';
-
-	for ($i = 0; $i < $length; $i++) {
-		$token .= $string[mt_rand(0, $max)];
-	}	
-
-	return $token;
-}
-
-function create_password($length = 6) {
-	$string = '123456789';
-
-	$max = strlen($string) - 1;
-
-	$password = '';
-
-	for ($i = 0; $i < $length; $i++) {
-		$password .= $string[mt_rand(0, $max)];
-	}
-
-	return $password;
-}
-
 function format_isodate($date) {
 	return date(DATE_ISO8601, strtotime($date));
 }

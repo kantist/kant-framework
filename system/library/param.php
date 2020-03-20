@@ -1,8 +1,24 @@
 <?php
+/**
+ * @package		Kant Framework
+ * @author		Emirhan Yumak
+ * @copyright	Copyright (c) 2016 - 2020, Kant Yazılım A.Ş. (https://kant.ist/)
+ * @license		https://opensource.org/licenses/mit
+ * @link		https://kant.ist
+*/
+
+/**
+* Param class
+*/
 class Param {
 	public $pagination = array();
 	public $includes = array();
 
+	/**
+	 * Constructor
+	 *
+	 * @param	object	$registry
+	*/
 	public function __construct($registry) {
 		$this->request = $registry->get('request');
 		$this->db = $registry->get('db');
@@ -33,6 +49,13 @@ class Param {
 		}
 	}
 
+	/**
+	 * Get meta data
+	 *
+	 * @param	int		$total_count
+	 *
+	 * @return	array
+	 */
 	public function getMetaData($total_count) {
 		$total_pages = ceil($total_count / $this->pagination['per_page']);
 
@@ -45,6 +68,13 @@ class Param {
 		return $meta_data;
 	}
 
+	/**
+	 * Get query for sort order
+	 *
+	 * @param	array	$allowed
+	 *
+	 * @return	string
+	 */
 	public function getSortOrderQuery($allowed = array()) {
 		$sql = '';
 
@@ -79,6 +109,11 @@ class Param {
 		return $sql;
 	}
 
+	/**
+	 * Get query for pagination (page, number)
+	 *
+	 * @return	string
+	 */
 	public function getPaginationQuery() {
 		$sql = '';
 
@@ -97,6 +132,13 @@ class Param {
 		return $sql;
 	}
 
+	/**
+	 * Get filtered query like (id, status etc.)
+	 *
+	 * @param	array	$allowed 
+	 *
+	 * @return	string
+	 */
 	public function getFilterQuery($allowed = array()) {
 		$sql = '';
 
@@ -128,10 +170,22 @@ class Param {
 		return $sql;
 	}
 
+	/**
+	 * Get all includes
+	 *
+	 * @return	array
+	 */
 	public function getIncludes() {
 		return $this->includes;
 	}
 
+	/**
+	 * Include in the url?
+	 *
+	 * @param	string	$include 
+	 *
+	 * @return	boolean
+	 */
 	public function hasInclude($include) {
 		if (in_array($include, $this->includes)) {
 			return true;

@@ -46,8 +46,11 @@ $_['config_autoload']      = array();
 // Autoload Libraries
 $_['library_autoload']     = array();
 
-// Autoload Libraries
+// Autoload Models
 $_['model_autoload']       = array();
+
+// Autoload Helpers
+$_['helper_autoload']       = array();
 
 // Actions
 $_['action_default']       = 'error/route';
