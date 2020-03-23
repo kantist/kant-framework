@@ -17,10 +17,17 @@ define('DIR_CACHE', DIR_REPOSITORY . 'repo/cache/');
 define('DIR_LOGS', DIR_REPOSITORY . 'repo/logs/');
 
 // OTHER DEFINES
-define('ENVIRONMENT', 'development');
 define('COOKIE_DOMAIN', '.' . MAIN_DOMAIN);
 define('SESSION', '.' . strtoupper(MAIN_DOMAIN));
 define('SESSION_EXPIRE', 2 * 24 * 60 * 60);
+
+// Debug
+if (isset($_GET['debug'])) {
+	define('ENVIRONMENT', 'development');
+} else {
+	// Default
+	define('ENVIRONMENT', 'development');
+}
 
 // Set Error Display
 if (ENVIRONMENT == 'development') {
