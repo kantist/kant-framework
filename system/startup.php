@@ -89,6 +89,7 @@ require_once(DIR_SYSTEM . 'engine/proxy.php');
 // Helper
 require_once(DIR_SYSTEM . 'helper/general.php');
 require_once(DIR_SYSTEM . 'helper/token.php');
+require_once(DIR_SYSTEM . 'helper/variable.php');
 require_once(DIR_SYSTEM . 'helper/utf8.php');
 require_once(DIR_SYSTEM . 'helper/json.php');
 require_once(DIR_SYSTEM . 'helper/hash_equals.php');

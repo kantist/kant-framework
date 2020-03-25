@@ -11,6 +11,11 @@ $_['db_password']			= 'db_pass';
 $_['db_database']			= 'db_database';
 $_['db_port']				= '3306';
 
+// Sms
+$_['sms_autostart']			= false;
+$_['sms_type']				= '';
+$_['sms_params']			= array();
+
 // Reponse
 $_['response_header']      = array('Content-Type: application/json');
 

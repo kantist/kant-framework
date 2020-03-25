@@ -58,6 +58,12 @@ if ($config->get('cache_autostart')) {
 $event = new Event($registry);
 $registry->set('event', $event);
 
+// SMS
+if ($config->get('sms_autostart')) {
+	$sms = new SMS($config->get('sms_type'), $config->get('sms_params'));
+	$registry->set('sms', $sms);
+}
+
 // API Params
 if ($config->get('param_autostart')) {
 	$registry->set('param', new Param($registry));

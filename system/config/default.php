@@ -8,7 +8,7 @@ $_['timezone_default']	   = 'Asia/Istanbul';
 
 // Database
 $_['db_autostart']         = false;
-$_['db_type']              = 'mysqli'; // mpdo, mssql, mysql, mysqli or postgre
+$_['db_type']              = 'pdo'; // pdo or mysqli
 $_['db_hostname']          = 'localhost';
 $_['db_username']          = 'root';
 $_['db_password']          = '';
@@ -24,6 +24,11 @@ $_['cache_expire']         = 2 * 24 * 60 * 60;
 $_['session_autostart']    = true;
 $_['session_engine']       = 'db';
 $_['session_name']         = 'KANTSESSID';
+
+// Sms
+$_['sms_autostart']			= false;
+$_['sms_type']				= 'IletiMerkezi'; // IletiMerkezi or AsistIletisim
+$_['sms_params']			= array();
 
 // Template
 $_['template_type']        = 'basic';
