@@ -62,6 +62,7 @@ class Session {
 		ini_set('session.cookie_path', '/');
 		ini_set('session.cookie_domain', COOKIE_DOMAIN);
 		ini_set('session.cookie_lifetime', SESSION_EXPIRE);
+		ini_set('session.cookie_samesite', 'Lax');
 
 		if (!$session_id) {
 			if (function_exists('random_bytes')) {
@@ -77,7 +78,22 @@ class Session {
 			exit('Error: Invalid session ID!');
 		}
 
-		session_set_cookie_params(SESSION_EXPIRE, '/', SESSION);
+		if (PHP_VERSION_ID >= 70300) { 
+			session_set_cookie_params([
+				'lifetime' => SESSION_EXPIRE,
+				'path' => '/',
+				'domain' => SESSION,
+				'secure' => true,
+				'samesite' => 'Lax'
+			]);
+		} else { 
+			session_set_cookie_params(
+				SESSION_EXPIRE,
+				'/; samesite=Lax',
+				SESSION,
+				true
+			);
+		}
 
 		$this->data = $this->adaptor->read($session_id);
 		
