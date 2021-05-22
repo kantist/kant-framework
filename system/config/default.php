@@ -8,7 +8,7 @@ $_['timezone_default']	   = 'Asia/Istanbul';
 
 // Database
 $_['db_autostart']         = false;
-$_['db_type']              = 'pdo'; // pdo or mysqli
+$_['db_type']              = 'mysqli'; // pdo or mysqli
 $_['db_hostname']          = 'localhost';
 $_['db_username']          = 'root';
 $_['db_password']          = '';
