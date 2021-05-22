@@ -1,4 +1,4 @@
-<p align="center"><img src="https://kant.ist/images/kant.png" width="300"></p>
+<p align="center"><img src="https://kant.ist/assets/images/logo/kant-black.svg" width="300"></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/kantist/kant-framework"><img src="https://poser.pugx.org/kantist/kant-framework/downloads" alt="Total Downloads"></a>
