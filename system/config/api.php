@@ -4,7 +4,7 @@ $_['site_ssl']				= true;
 
 // Database
 $_['db_autostart']			= false;
-$_['db_type']				= 'pdo';
+$_['db_type']				= 'mysqli';
 $_['db_hostname']			= 'localhost';
 $_['db_username']			= 'db_user';
 $_['db_password']			= 'db_pass';
